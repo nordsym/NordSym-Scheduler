@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boka Strategimöte | NordSym</title>
+    <meta name="description" content="Boka ett strategimöte med Gustav Hemmingsson, NordSym AB.">
+    
+    <!-- SEO & Social -->
+    <meta name="author" content="NordSym AB">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Boka Strategimöte | NordSym">
+    <meta property="og:image" content="https://nordsym.com/og-default.jpg">
+
+    <!-- NordSym Favicon -->
+    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/GusHem/Logga-utan-text/refs/heads/main/Final%20logo%20no%20text.svg">
+    
+    <!-- Framework & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@300;400;500;600;700;800&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Comfortaa', 'sans-serif'],
+                        mono: ['Source Code Pro', 'monospace'],
+                    },
+                    colors: {
+                        nord: {
+                            bg: '#0c1427',
+                            cyan: '#00D4FF',
+                            purple: '#9370DB',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* --- NORDSYM DESIGN SYSTEM CORE --- */
+        :root {
+            --nord-bg-primary: #0c1427;
+            --nord-cyan: #00D4FF;
+            --nord-purple: #9370DB;
+            --nord-text-primary: #F0F4F8;
+            --nord-text-secondary: #CBD5E0;
+            --glass-bg: rgba(30, 58, 138, 0.15); 
+            --glass-border: rgba(0, 212, 255, 0.15);
+            --glass-blur: blur(20px);
+            --input-bg: rgba(12, 20, 39, 0.6);
+            --input-border: rgba(240, 244, 248, 0.1);
+            --cyan-glow: rgba(0, 212, 255, 0.3);
+            --success: #10B981;
+        }
+
+        body[data-theme="light"] {
+            --nord-bg-primary: #FFFFFF;
+            --nord-cyan: #00BFFF;
+            --nord-text-primary: #0A2540;
+            --nord-text-secondary: #4B5563;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-border: #E5E7EB;
+            --input-bg: #F9FAFB;
+            --input-border: #D1D5DB;
+            --cyan-glow: rgba(0, 191, 255, 0.08);
+        }
+
+        body {
+            background-color: var(--nord-bg-primary);
+            color: var(--nord-text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        #starfall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        body[data-theme="light"] #starfall { opacity: 0; }
+        body[data-theme="light"] {
+            background-image: linear-gradient(#F3F4F6 1px, transparent 1px), linear-gradient(90deg, #F3F4F6 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* UI Components */
+        .glass-panel {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button {
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 31, 63, 0.4);
+            border: 1px solid var(--nord-cyan);
+            color: var(--nord-cyan);
+            border-radius: 0.5rem;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .cta-button:hover {
+            background: var(--nord-cyan);
+            color: #0c1427;
+            box-shadow: 0 0 20px var(--cyan-glow);
+        }
+
+        .cta-button.primary {
+            background: var(--nord-cyan);
+            color: #0c1427;
+        }
+        
+        body[data-theme="light"] .cta-button { background: white; color: var(--nord-cyan); }
+        body[data-theme="light"] .cta-button:hover { background: var(--nord-cyan); color: white; }
+        body[data-theme="light"] .cta-button.primary { background: var(--nord-cyan); color: white; }
+
+        /* Calendar Specifics */
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .calendar-day:hover:not(.disabled):not(.selected) {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--nord-cyan);
+        }
+
+        .calendar-day.selected {
+            background: var(--nord-cyan);
+            color: #0c1427;
+            font-weight: 800;
+            box-shadow: 0 0 15px var(--cyan-glow);
+        }
+
+        .calendar-day.disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+
+        .calendar-day.today {
+            border: 1px solid var(--nord-cyan);
+        }
+
+        .time-slot {
+            padding: 0.75rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .time-slot:hover {
+            border-color: var(--nord-cyan);
+            box-shadow: 0 0 10px var(--cyan-glow);
+            transform: scale(1.02);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .input-styled {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            padding: 0.8rem;
+            border-radius: 0.5rem;
+            color: inherit;
+            font-family: 'Source Code Pro', monospace;
+        }
+        .input-styled:focus {
+            outline: none;
+            border-color: var(--nord-cyan);
+            box-shadow: 0 0 10px var(--cyan-glow);
+        }
+
+        /* Animation Utilities */
+        .fade-in { animation: fadeIn 0.3s ease forwards; opacity: 0; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        
+        .slide-in { animation: slideIn 0.3s ease forwards; opacity: 0; transform: translateX(-10px); }
+        @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--nord-cyan); }
+    </style>
+</head>
+<body class="antialiased" data-theme="light">
+
+    <canvas id="starfall"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-gradient-to-b from-[var(--nord-bg-primary)]/90 to-transparent backdrop-blur-sm">
+        <div class="flex items-center gap-4">
+            <a href="https://nordsym.com" class="hover:scale-105 transition-transform">
+                <img src="https://raw.githubusercontent.com/GusHem/Logga-utan-text/refs/heads/main/Final%20logo%20no%20text.svg" alt="NordSym" class="h-8 w-8">
+            </a>
+            <span class="text-xs font-bold uppercase tracking-widest opacity-60 hidden sm:block">
+                NordSym AB
+            </span>
+        </div>
+        <button id="themeToggle" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--glass-border)] text-[var(--nord-cyan)] hover:bg-[var(--glass-bg)] transition-all">
+            <i class="ph-bold ph-moon"></i>
+        </button>
+    </nav>
+
+    <!-- Main App Container -->
+    <main class="min-h-screen flex items-center justify-center p-4 pt-20">
+        
+        <!-- The Scheduler Card -->
+        <div class="glass-panel w-full max-w-5xl min-h-[600px] flex flex-col md:flex-row overflow-hidden shadow-2xl relative">
+            
+            <!-- Left Column: Context -->
+            <div class="w-full md:w-1/3 p-8 border-b md:border-b-0 md:border-r border-[var(--glass-border)] flex flex-col justify-between relative bg-[var(--glass-bg)]">
+                <div>
+                    <!-- Host Info -->
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-[var(--nord-cyan)]/20 border border-[var(--nord-cyan)] flex items-center justify-center overflow-hidden">
+                             <!-- Placeholder for Avatar if needed, using Initials for now -->
+                             <span class="font-bold text-[var(--nord-cyan)]">GH</span>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest opacity-50 font-bold">Din Värd</p>
+                            <h3 class="font-bold text-sm">Gustav Hemmingsson</h3>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Meeting Content -->
+                    <div id="meetingInfoContainer" class="transition-opacity duration-300">
+                        <!-- Back Button (Hidden by default) -->
+                        <button id="resetMeetingBtn" onclick="setMeetingType('standard')" class="hidden mb-4 text-[10px] font-bold uppercase tracking-widest text-[var(--nord-cyan)] hover:opacity-80 flex items-center gap-1">
+                            <i class="ph-bold ph-arrow-left"></i> Tillbaka till AEO
+                        </button>
+
+                        <h1 id="meetingTitle" class="font-display text-2xl md:text-3xl mb-4 text-[var(--nord-text-primary)]">
+                            Strategimöte <br><span class="text-[var(--nord-cyan)]">AEO & AI</span>
+                        </h1>
+                        
+                        <div class="space-y-4 text-sm opacity-80 mb-8">
+                            <div class="flex items-center gap-3">
+                                <i class="ph-bold ph-clock text-[var(--nord-cyan)]"></i>
+                                <span id="meetingDuration">30 minuter</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="ph-bold ph-video-camera text-[var(--nord-cyan)]"></i>
+                                <span>Google Meet / Zoom</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="ph-bold ph-text-align-left text-[var(--nord-cyan)] mt-1"></i>
+                                <span id="meetingDesc" class="leading-relaxed text-xs opacity-70">
+                                    Vi går igenom din nuvarande digitala närvaro och identifierar hur AEO kan öka din synlighet i AI-erans sökresultat.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-auto">
+                    <!-- Promo Box: Clickable to switch context -->
+                    <div id="promoBox" onclick="setMeetingType('custom')" class="mb-4 p-3 rounded-lg bg-gradient-to-br from-[var(--nord-cyan)]/5 to-transparent border border-[var(--nord-cyan)]/10 hover:border-[var(--nord-cyan)]/30 hover:bg-[var(--nord-cyan)]/10 transition-all group cursor-pointer active:scale-95">
+                        <div class="flex items-center gap-1.5 mb-1">
+                            <i class="ph-duotone ph-sparkle text-[var(--nord-cyan)] text-xs"></i>
+                            <p class="text-[9px] font-black uppercase tracking-widest text-[var(--nord-cyan)]">Skräddarsydd Lösning</p>
+                        </div>
+                        <p class="text-[10px] opacity-60 mb-2 leading-relaxed">
+                            Behöver ditt bolag ett eget bokningssystem? Klicka här för att boka ett möte om det.
+                        </p>
+                        <span class="text-[10px] font-bold flex items-center gap-1 group-hover:gap-2 transition-all text-[var(--nord-text-primary)]">
+                            Välj detta alternativ <i class="ph-bold ph-arrow-right text-[var(--nord-cyan)]"></i>
+                        </span>
+                    </div>
+
+                    <!-- Updated Copyright -->
+                    <div class="text-[10px] font-mono opacity-40 flex items-center justify-between">
+                        <span>&copy; NordSym AB Internal Tool v1.0</span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-500/80" title="System Operational"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Interactive Calendar -->
+            <div class="w-full md:w-2/3 p-8 relative flex flex-col">
+                
+                <!-- View 1: Date Picker -->
+                <div id="calendarView" class="flex flex-col h-full transition-all duration-300">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold" id="currentMonthLabel">Januari 2025</h2>
+                        <div class="flex gap-2">
+                            <button onclick="changeMonth(-1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[var(--glass-border)] transition-colors"><i class="ph-bold ph-caret-left"></i></button>
+                            <button onclick="changeMonth(1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[var(--glass-border)] transition-colors"><i class="ph-bold ph-caret-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Weekday Headers -->
+                    <div class="grid grid-cols-7 mb-2 text-center">
+                        <span class="text-[10px] uppercase font-bold opacity-40">Mån</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40">Tis</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40">Ons</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40">Tor</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40">Fre</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40 text-red-400">Lör</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40 text-red-400">Sön</span>
+                    </div>
+
+                    <!-- Days Grid -->
+                    <div id="daysGrid" class="grid grid-cols-7 gap-2 mb-8">
+                        <!-- JS injected days -->
+                    </div>
+
+                    <!-- Time Slots Container (Hidden initially) -->
+                    <div id="timeSlotContainer" class="hidden border-t border-[var(--glass-border)] pt-6 fade-in h-full overflow-y-auto">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm font-bold opacity-80" id="selectedDateLabel">Välj en tid</span>
+                            <button onclick="resetSelection()" class="text-xs text-[var(--nord-cyan)] hover:underline">Byt dag</button>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="timeSlotsGrid">
+                            <!-- JS injected times -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View 2: Booking Form (Hidden) -->
+                <div id="bookingForm" class="hidden flex-col h-full fade-in">
+                    <button onclick="backToCalendar()" class="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100 hover:text-[var(--nord-cyan)] transition-colors">
+                        <i class="ph-bold ph-arrow-left"></i> Tillbaka
+                    </button>
+                    
+                    <h2 class="text-2xl font-bold mb-2">Slutför bokning</h2>
+                    <p class="text-sm opacity-60 mb-8" id="bookingSummary">Tid och datum...</p>
+
+                    <form id="confirmForm" class="space-y-4 max-w-md">
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-widest opacity-50 mb-1">Namn</label>
+                            <input type="text" name="name" required class="input-styled" placeholder="Ditt namn">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-widest opacity-50 mb-1">E-post</label>
+                            <input type="email" name="email" required class="input-styled" placeholder="namn@foretag.se">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-widest opacity-50 mb-1">Meddelande (Valfritt)</label>
+                            <textarea name="notes" rows="3" class="input-styled" placeholder="Något specifikt vi ska förbereda?"></textarea>
+                        </div>
+                        
+                        <div class="pt-4">
+                            <button type="submit" class="cta-button primary w-full flex justify-center items-center gap-2">
+                                <span>Boka Möte</span>
+                                <i class="ph-bold ph-paper-plane-right"></i>
+                            </button>
+                        </div>
+                        <p class="text-[10px] text-center opacity-40 mt-2">En kalenderinbjudan skickas automatiskt.</p>
+                    </form>
+                </div>
+
+                <!-- Success State -->
+                <div id="successState" class="hidden flex-col h-full items-center justify-center text-center fade-in">
+                    <div class="w-16 h-16 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center text-3xl mb-4 border border-green-500/50">
+                        <i class="ph-fill ph-check"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2">Bokning Bekräftad!</h2>
+                    <p class="opacity-60 text-sm max-w-xs mx-auto mb-8">Vi har skickat en bekräftelse till din e-post. Ser fram emot vårt möte.</p>
+                    <button onclick="location.reload()" class="cta-button">Boka nytt</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- LOGIC -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Theme & Visuals ---
+            const canvas = document.getElementById('starfall');
+            const ctx = canvas.getContext('2d');
+            let width, height, stars = [];
+            const resize = () => { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; initStars(); };
+            const initStars = () => { stars = []; for(let i = 0; i < (width < 768 ? 50 : 150); i++) stars.push({ x: Math.random() * width, y: Math.random() * height, r: Math.random() * 1.5, a: Math.random() }); };
+            const draw = () => {
+                ctx.clearRect(0, 0, width, height);
+                stars.forEach(s => { s.a += 0.005; ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(Math.sin(s.a)) * 0.4})`; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill(); });
+                requestAnimationFrame(draw);
+            };
+            window.addEventListener('resize', resize); resize(); draw();
+
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', () => {
+                const body = document.body;
+                body.setAttribute('data-theme', body.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+            });
+
+            // --- Calendar Logic ---
+            let currentDate = new Date();
+            let selectedDate = null;
+            let selectedTime = null;
+
+            const monthNames = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"];
+            
+            // Mock Data: Available times based on day of week
+            // 0=Sun, 6=Sat. 
+            const availability = {
+                1: ["09:00", "10:00", "13:00", "14:30"], // Mon
+                2: ["09:00", "11:00", "14:00", "15:30"], // Tue
+                3: ["10:00", "13:00", "14:00"],           // Wed
+                4: ["09:00", "10:00", "11:00", "13:00"], // Thu
+                5: ["09:00", "10:00"]                     // Fri
+            };
+
+            function renderCalendar() {
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+                
+                document.getElementById('currentMonthLabel').textContent = `${monthNames[month]} ${year}`;
+                
+                const firstDay = new Date(year, month, 1).getDay(); // 0 = Sun
+                // Adjust for Monday start (0=Mon, 6=Sun)
+                const startOffset = firstDay === 0 ? 6 : firstDay - 1;
+                
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const grid = document.getElementById('daysGrid');
+                grid.innerHTML = '';
+
+                // Empty slots for previous month
+                for(let i=0; i<startOffset; i++) {
+                    const div = document.createElement('div');
+                    grid.appendChild(div);
+                }
+
+                const today = new Date();
+                
+                for(let d=1; d<=daysInMonth; d++) {
+                    const dayDate = new Date(year, month, d);
+                    const dayOfWeek = dayDate.getDay();
+                    const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+                    const isPast = dayDate < new Date(today.setHours(0,0,0,0));
+                    const isToday = d === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+
+                    const el = document.createElement('div');
+                    el.className = `calendar-day ${isPast || isWeekend ? 'disabled' : ''} ${isToday ? 'today' : ''}`;
+                    el.textContent = d;
+
+                    if (!isPast && !isWeekend) {
+                        el.onclick = () => selectDate(d, el);
+                    }
+                    
+                    grid.appendChild(el);
+                }
+            }
+
+            window.changeMonth = (delta) => {
+                currentDate.setMonth(currentDate.getMonth() + delta);
+                renderCalendar();
+                document.getElementById('timeSlotContainer').classList.add('hidden');
+                document.getElementById('daysGrid').classList.remove('opacity-50', 'pointer-events-none');
+            };
+
+            function selectDate(day, el) {
+                // UI Reset
+                document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                el.classList.add('selected');
+                
+                selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+                
+                // Show Times
+                const formattedDate = `${day} ${monthNames[currentDate.getMonth()]}`;
+                document.getElementById('selectedDateLabel').textContent = `Tider för ${formattedDate}`;
+                
+                const container = document.getElementById('timeSlotContainer');
+                const timeGrid = document.getElementById('timeSlotsGrid');
+                timeGrid.innerHTML = '';
+
+                // Get slots (Mock logic)
+                const dayOfWeek = selectedDate.getDay();
+                const slots = availability[dayOfWeek] || [];
+
+                if(slots.length === 0) {
+                    timeGrid.innerHTML = '<div class="col-span-3 text-center text-xs opacity-50 py-4">Inga lediga tider denna dag.</div>';
+                } else {
+                    slots.forEach((time, index) => {
+                        const btn = document.createElement('div');
+                        btn.className = 'time-slot slide-in';
+                        btn.style.animationDelay = `${index * 0.05}s`;
+                        btn.textContent = time;
+                        btn.onclick = () => confirmTime(time);
+                        timeGrid.appendChild(btn);
+                    });
+                }
+
+                // Transition UI
+                document.getElementById('daysGrid').classList.add('opacity-50', 'pointer-events-none');
+                container.classList.remove('hidden');
+            }
+
+            window.resetSelection = () => {
+                document.getElementById('timeSlotContainer').classList.add('hidden');
+                document.getElementById('daysGrid').classList.remove('opacity-50', 'pointer-events-none');
+                document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+            };
+
+            function confirmTime(time) {
+                selectedTime = time;
+                const dateStr = `${selectedDate.getDate()} ${monthNames[selectedDate.getMonth()]} ${selectedDate.getFullYear()}`;
+                
+                document.getElementById('bookingSummary').innerHTML = `<span class="text-[var(--nord-cyan)] font-bold">${dateStr}</span> kl <span class="text-[var(--nord-cyan)] font-bold">${time}</span>`;
+                
+                document.getElementById('calendarView').classList.add('hidden');
+                document.getElementById('bookingForm').classList.remove('hidden');
+                document.getElementById('bookingForm').classList.add('flex');
+            }
+
+            window.backToCalendar = () => {
+                document.getElementById('bookingForm').classList.add('hidden');
+                document.getElementById('bookingForm').classList.remove('flex');
+                document.getElementById('calendarView').classList.remove('hidden');
+            };
+
+            // Booking Form Handler
+            document.getElementById('confirmForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button');
+                const originalText = btn.innerHTML;
+                
+                // 1. Samla in all data
+                const formData = new FormData(e.target);
+                const meetingContext = document.getElementById('meetingTitle').innerText.replace('\n', ' '); // Hämtar titeln (AEO eller Skräddarsydd)
+                
+                // Skapa ett snyggt datum-objekt att skicka
+                const payload = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    notes: formData.get('notes'),
+                    date: selectedDate.toLocaleDateString('sv-SE'), // T.ex. "2025-01-15"
+                    time: selectedTime,
+                    type: meetingContext, // "Strategimöte AEO & AI" eller "Konsultation Skräddarsydd Tech"
+                    timestamp: new Date().toISOString()
+                };
+
+                // UI: Loading state
+                btn.disabled = true;
+                btn.innerHTML = '<i class="ph-bold ph-spinner animate-spin text-xl"></i>';
+
+                try {
+                    // 2. Skicka till n8n (BYT UT URL:en NEDAN TILL DIN N8N WEBHOOK)
+                    // const webhookUrl = 'https://nordsym.app.n8n.cloud/webhook/...'; 
+                    
+                    // För demo-syfte simulerar vi bara en success nu, 
+                    // men avkommentera raderna nedan när du har din URL.
+                    
+                    /*
+                    const response = await fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    */
+
+                    // Simulera nätverksfördröjning (ta bort denna när du kör på riktigt)
+                    await new Promise(r => setTimeout(r, 1500));
+
+                    // 3. Success UI
+                    document.getElementById('bookingForm').classList.add('hidden');
+                    document.getElementById('bookingForm').classList.remove('flex');
+                    document.getElementById('successState').classList.remove('hidden');
+                    document.getElementById('successState').classList.add('flex');
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    btn.innerHTML = 'Något gick fel, försök igen';
+                    btn.disabled = false;
+                }
+            });
+
+            // Init
+            renderCalendar();
+
+            // --- Meeting Type Switcher Logic ---
+            window.setMeetingType = (type) => {
+                const container = document.getElementById('meetingInfoContainer');
+                const title = document.getElementById('meetingTitle');
+                const desc = document.getElementById('meetingDesc');
+                const resetBtn = document.getElementById('resetMeetingBtn');
+                const promoBox = document.getElementById('promoBox');
+
+                // Fade out
+                container.classList.add('opacity-0');
+
+                setTimeout(() => {
+                    if (type === 'custom') {
+                        title.innerHTML = 'Konsultation <br><span class="text-[var(--nord-cyan)]">Skräddarsydd Tech</span>';
+                        desc.textContent = 'Vi diskuterar era behov av interna verktyg och hur vi kan bygga en white-label lösning som matchar ert varumärke.';
+                        resetBtn.classList.remove('hidden');
+                        promoBox.classList.add('hidden'); // Hide promo box when selected to avoid confusion
+                    } else {
+                        title.innerHTML = 'Strategimöte <br><span class="text-[var(--nord-cyan)]">AEO & AI</span>';
+                        desc.textContent = 'Vi går igenom din nuvarande digitala närvaro och identifierar hur AEO kan öka din synlighet i AI-erans sökresultat.';
+                        resetBtn.classList.add('hidden');
+                        promoBox.classList.remove('hidden');
+                    }
+                    // Fade in
+                    container.classList.remove('opacity-0');
+                }, 300);
+            };
+        });
+    </script>
+</body>
+</html>
