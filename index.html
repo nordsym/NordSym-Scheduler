@@ -300,10 +300,10 @@
                             <p class="text-[9px] font-black uppercase tracking-widest text-[var(--nord-cyan)]">Skräddarsydd Lösning</p>
                         </div>
                         <p class="text-[10px] opacity-60 mb-2 leading-relaxed">
-                            Behöver ditt bolag ett eget bokningssystem? Klicka här för att boka ett möte om det.
+                            Behöver ditt bolag ett eget bokningssystem? Vi bygger lösningar som matchar er identitet.
                         </p>
                         <span class="text-[10px] font-bold flex items-center gap-1 group-hover:gap-2 transition-all text-[var(--nord-text-primary)]">
-                            Välj detta alternativ <i class="ph-bold ph-arrow-right text-[var(--nord-cyan)]"></i>
+                            Utforska möjligheterna <i class="ph-bold ph-arrow-right text-[var(--nord-cyan)]"></i>
                         </span>
                     </div>
 
@@ -576,13 +576,9 @@
                 btn.innerHTML = '<i class="ph-bold ph-spinner animate-spin text-xl"></i>';
 
                 try {
-                    // 2. Skicka till n8n (BYT UT URL:en NEDAN TILL DIN N8N WEBHOOK)
-                    // const webhookUrl = 'https://nordsym.app.n8n.cloud/webhook/...'; 
+                    // 2. Skicka till n8n
+                    const webhookUrl = 'https://nordsym.app.n8n.cloud/webhook/aeo-booking'; 
                     
-                    // För demo-syfte simulerar vi bara en success nu, 
-                    // men avkommentera raderna nedan när du har din URL.
-                    
-                    /*
                     const response = await fetch(webhookUrl, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -590,10 +586,6 @@
                     });
 
                     if (!response.ok) throw new Error('Network response was not ok');
-                    */
-
-                    // Simulera nätverksfördröjning (ta bort denna när du kör på riktigt)
-                    await new Promise(r => setTimeout(r, 1500));
 
                     // 3. Success UI
                     document.getElementById('bookingForm').classList.add('hidden');
