@@ -232,13 +232,22 @@
             <a href="https://nordsym.com" class="hover:scale-105 transition-transform">
                 <img src="https://raw.githubusercontent.com/GusHem/Logga-utan-text/refs/heads/main/Final%20logo%20no%20text.svg" alt="NordSym" class="h-8 w-8">
             </a>
-            <span class="text-xs font-bold uppercase tracking-widest opacity-60 hidden sm:block">
+            <a href="https://nordsym.com" class="text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100 transition-opacity hidden sm:block">
                 NordSym AB
-            </span>
+            </a>
         </div>
-        <button id="themeToggle" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--glass-border)] text-[var(--nord-cyan)] hover:bg-[var(--glass-bg)] transition-all">
-            <i class="ph-bold ph-moon"></i>
-        </button>
+
+        <div class="flex items-center gap-6">
+            <!-- Explicit Back Link -->
+            <a href="https://nordsym.com" class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[var(--nord-cyan)] hover:text-[var(--nord-text-primary)] transition-colors flex items-center gap-2 group">
+                <i class="ph-bold ph-arrow-left group-hover:-translate-x-1 transition-transform"></i> 
+                <span>Tillbaka till <span class="hidden sm:inline">NordSym.com</span><span class="sm:hidden">Start</span></span>
+            </a>
+
+            <button id="themeToggle" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--glass-border)] text-[var(--nord-cyan)] hover:bg-[var(--glass-bg)] transition-all">
+                <i class="ph-bold ph-moon"></i>
+            </button>
+        </div>
     </nav>
 
     <!-- Main App Container -->
