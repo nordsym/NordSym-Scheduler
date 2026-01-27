@@ -436,7 +436,46 @@
 
     <!-- LOGIC -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+            // --- CONFIG LOADING ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const meetingType = urlParams.get('type') || 'aeo'; // Default to AEO
+            let currentConfig = null;
+
+            // Load config
+            try {
+                const response = await fetch(`configs/${meetingType}.json`);
+                if (!response.ok) throw new Error('Config not found');
+                currentConfig = await response.json();
+                applyConfig(currentConfig);
+            } catch (error) {
+                console.error('Error loading config:', error);
+                // Fallback to default AEO config
+                const fallback = await fetch('configs/aeo.json');
+                currentConfig = await fallback.json();
+                applyConfig(currentConfig);
+            }
+
+            function applyConfig(config) {
+                // Update meeting info
+                document.getElementById('meetingTitle').innerHTML =
+                    `${config.title} <br><span class="text-[var(--nord-cyan)]">${config.subtitle}</span>`;
+                document.getElementById('meetingDuration').textContent = config.duration;
+                document.getElementById('meetingDesc').textContent = config.description;
+
+                // Update promo box
+                const promoBox = document.getElementById('promoBox');
+                if (config.promoBox && config.promoBox.show) {
+                    promoBox.style.display = 'block';
+                    // Keep existing promo box content for AEO
+                } else {
+                    promoBox.style.display = 'none';
+                }
+
+                // Update page title
+                document.title = `${config.title} - ${config.subtitle} | NordSym`;
+            }
+
             // --- Theme & Visuals ---
             const canvas = document.getElementById('starfall');
             const ctx = canvas.getContext('2d');
@@ -589,8 +628,7 @@
                 
                 // 1. Samla in all data
                 const formData = new FormData(e.target);
-                const meetingContext = document.getElementById('meetingTitle').innerText.replace('\n', ' '); // Hämtar titeln (AEO eller Skräddarsydd)
-                
+
                 // Skapa ett snyggt datum-objekt att skicka
                 const payload = {
                     name: formData.get('name'),
@@ -598,7 +636,8 @@
                     notes: formData.get('notes'),
                     date: selectedDate.toLocaleDateString('sv-SE'), // T.ex. "2025-01-15"
                     time: selectedTime,
-                    type: meetingContext, // "Strategimöte AEO & AI" eller "Konsultation Skräddarsydd Tech"
+                    meetingType: currentConfig.id, // "aeo", "strategisamtal", etc.
+                    meetingTitle: currentConfig.title + ' - ' + currentConfig.subtitle, // "Strategimöte - AEO & AI"
                     timestamp: new Date().toISOString()
                 };
 
@@ -634,32 +673,10 @@
             // Init
             renderCalendar();
 
-            // --- Meeting Type Switcher Logic ---
+            // --- Meeting Type Navigation (Config System) ---
             window.setMeetingType = (type) => {
-                const container = document.getElementById('meetingInfoContainer');
-                const title = document.getElementById('meetingTitle');
-                const desc = document.getElementById('meetingDesc');
-                const resetBtn = document.getElementById('resetMeetingBtn');
-                const promoBox = document.getElementById('promoBox');
-
-                // Fade out
-                container.classList.add('opacity-0');
-
-                setTimeout(() => {
-                    if (type === 'custom') {
-                        title.innerHTML = 'Konsultation <br><span class="text-[var(--nord-cyan)]">Skräddarsydd Tech</span>';
-                        desc.textContent = 'Vi diskuterar era behov av interna verktyg och hur vi kan bygga en white-label lösning som matchar ert varumärke.';
-                        resetBtn.classList.remove('hidden');
-                        promoBox.classList.add('hidden'); // Hide promo box when selected to avoid confusion
-                    } else {
-                        title.innerHTML = 'Strategimöte <br><span class="text-[var(--nord-cyan)]">AEO & AI</span>';
-                        desc.textContent = 'Vi går igenom din nuvarande digitala närvaro och identifierar hur AEO kan öka din synlighet i AI-erans sökresultat.';
-                        resetBtn.classList.add('hidden');
-                        promoBox.classList.remove('hidden');
-                    }
-                    // Fade in
-                    container.classList.remove('opacity-0');
-                }, 300);
+                // Navigate to different meeting type via URL param
+                window.location.href = `?type=${type}`;
             };
         });
     </script>

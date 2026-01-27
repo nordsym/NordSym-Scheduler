@@ -1,0 +1,17 @@
+{
+  "id": "aeo",
+  "title": "Strategimöte",
+  "subtitle": "AEO & AI",
+  "duration": "30 minuter",
+  "description": "Vi går igenom din nuvarande digitala närvaro och identifierar hur AEO kan öka din synlighet i AI-erans sökresultat.",
+  "icon": "ph-magnifying-glass",
+  "ctaText": "Boka Möte",
+  "promoBox": {
+    "show": true,
+    "icon": "ph-sparkle",
+    "title": "Skräddarsydd Lösning",
+    "description": "Behöver ditt bolag ett eget bokningssystem? Vi bygger lösningar som matchar er identitet.",
+    "linkText": "Utforska möjligheterna",
+    "linkType": "custom"
+  }
+}
