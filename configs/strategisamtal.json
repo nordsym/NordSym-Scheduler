@@ -1,10 +1,10 @@
 {
   "id": "strategisamtal",
   "title": "Strategisamtal",
-  "subtitle": "Bygg bort begränsningar",
+  "subtitle": "Era utmaningar",
   "duration": "30 minuter",
-  "description": "Ett öppet samtal om era utmaningar - vi identifierar flaskhalsar och diskuterar konkreta lösningar, oavsett om det handlar om AI, automation, eller digital transformation.",
-  "icon": "ph-lightbulb",
+  "description": "Ett öppet samtal där vi lyssnar på era utmaningar och diskuterar konkreta lösningar — oavsett om det handlar om AI, automation eller digital transformation.",
+  "icon": "ph-chat-circle",
   "ctaText": "Boka Samtal",
   "promoBox": {
     "show": false

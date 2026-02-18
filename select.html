@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boka Möte | NordSym</title>
+    <meta name="description" content="Välj mötestyp och boka tid med Gustav Hemmingsson, NordSym AB.">
+    
+    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/GusHem/Logga-utan-text/refs/heads/main/Final%20logo%20no%20text.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Comfortaa', 'sans-serif'],
+                    },
+                    colors: {
+                        nord: {
+                            bg: '#0c1427',
+                            cyan: '#00D4FF',
+                            purple: '#9370DB',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --nord-bg-primary: #0c1427;
+            --nord-cyan: #00D4FF;
+            --nord-purple: #9370DB;
+            --glass-bg: rgba(30, 58, 138, 0.15);
+            --glass-border: rgba(0, 212, 255, 0.15);
+            --cyan-glow: rgba(0, 212, 255, 0.3);
+        }
+
+        body {
+            background-color: var(--nord-bg-primary);
+            color: #F0F4F8;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        #starfall {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .meeting-card {
+            background: rgba(30, 58, 138, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .meeting-card:hover {
+            border-color: var(--nord-cyan);
+            background: rgba(0, 212, 255, 0.05);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .meeting-card .icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <canvas id="starfall"></canvas>
+
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center">
+        <a href="https://nordsym.com" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <img src="https://raw.githubusercontent.com/GusHem/Logga-utan-text/refs/heads/main/Final%20logo%20no%20text.svg" alt="NordSym" class="h-8 w-8">
+            <span class="text-xs font-bold uppercase tracking-widest opacity-60">NordSym AB</span>
+        </a>
+    </nav>
+
+    <!-- Main -->
+    <main class="min-h-screen flex items-center justify-center p-4 pt-20">
+        <div class="glass-card w-full max-w-2xl p-8 md:p-12">
+            
+            <!-- Header -->
+            <div class="text-center mb-10">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--nord-cyan)]/10 border border-[var(--nord-cyan)]/30 flex items-center justify-center">
+                    <span class="text-2xl">GH</span>
+                </div>
+                <h1 class="font-display text-2xl md:text-3xl mb-2">Boka möte med Gustav</h1>
+                <p class="text-sm opacity-60">Vad vill du prata om?</p>
+            </div>
+
+            <!-- Meeting Type Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                <!-- Strategisamtal -->
+                <a href="index.html?type=strategisamtal" class="meeting-card group">
+                    <div class="icon bg-purple-500/20 text-purple-400">
+                        <i class="ph-bold ph-chat-circle"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-[var(--nord-cyan)] transition-colors">
+                        💬 Strategisamtal
+                    </h3>
+                    <p class="text-sm opacity-60">
+                        Vi pratar om era utmaningar — öppet och agnostiskt.
+                    </p>
+                </a>
+
+                <!-- AEO, GEO & SEO -->
+                <a href="index.html?type=aeo" class="meeting-card group">
+                    <div class="icon bg-cyan-500/20 text-cyan-400">
+                        <i class="ph-bold ph-magnifying-glass"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-[var(--nord-cyan)] transition-colors">
+                        🔍 AEO, GEO & SEO
+                    </h3>
+                    <p class="text-sm opacity-60">
+                        Synlighet i AI- och traditionella sökmotorer.
+                    </p>
+                </a>
+
+                <!-- AI Automation -->
+                <a href="index.html?type=automation" class="meeting-card group">
+                    <div class="icon bg-amber-500/20 text-amber-400">
+                        <i class="ph-bold ph-lightning"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-[var(--nord-cyan)] transition-colors">
+                        ⚡ AI Automation
+                    </h3>
+                    <p class="text-sm opacity-60">
+                        Automatisera era tidstjuvar med AI.
+                    </p>
+                </a>
+
+                <!-- Skräddarsydd lösning -->
+                <a href="index.html?type=custom" class="meeting-card group">
+                    <div class="icon bg-green-500/20 text-green-400">
+                        <i class="ph-bold ph-wrench"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 group-hover:text-[var(--nord-cyan)] transition-colors">
+                        🛠️ Skräddarsydd lösning
+                    </h3>
+                    <p class="text-sm opacity-60">
+                        Vi bygger precis det ni behöver.
+                    </p>
+                </a>
+
+            </div>
+
+            <!-- Footer -->
+            <p class="text-center text-xs opacity-40 mt-8">
+                30 minuter • Google Meet • Gratis
+            </p>
+
+        </div>
+    </main>
+
+    <script>
+        // Starfall animation
+        const canvas = document.getElementById('starfall');
+        const ctx = canvas.getContext('2d');
+        let width, height, stars = [];
+        
+        const resize = () => {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            stars = [];
+            for(let i = 0; i < 100; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    r: Math.random() * 1.5,
+                    a: Math.random()
+                });
+            }
+        };
+        
+        const draw = () => {
+            ctx.clearRect(0, 0, width, height);
+            stars.forEach(s => {
+                s.a += 0.005;
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(Math.sin(s.a)) * 0.4})`;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            requestAnimationFrame(draw);
+        };
+        
+        window.addEventListener('resize', resize);
+        resize();
+        draw();
+    </script>
+</body>
+</html>

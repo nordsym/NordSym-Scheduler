@@ -1,0 +1,12 @@
+{
+  "id": "custom",
+  "title": "Skräddarsydd lösning",
+  "subtitle": "Vi bygger det ni behöver",
+  "duration": "30 minuter",
+  "description": "Har ni en specifik idé eller utmaning? Vi sätter oss ner och designar en lösning som passar just ert företag — från koncept till implementation.",
+  "icon": "ph-wrench",
+  "ctaText": "Boka Möte",
+  "promoBox": {
+    "show": false
+  }
+}

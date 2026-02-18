@@ -1,0 +1,12 @@
+{
+  "id": "automation",
+  "title": "AI Automation",
+  "subtitle": "Automatisera tidstjuvarna",
+  "duration": "30 minuter",
+  "description": "Vi identifierar era största tidstjuvar och visar hur AI-driven automation kan frigöra tid för det som faktiskt driver ert företag framåt.",
+  "icon": "ph-lightning",
+  "ctaText": "Boka Möte",
+  "promoBox": {
+    "show": false
+  }
+}
