@@ -21,8 +21,7 @@
                     },
                     colors: {
                         nord: {
-                            bg: '#0c1427',
-                            cyan: '#00D4FF',
+                            cyan: '#00BFFF',
                             purple: '#9370DB',
                         }
                     }
@@ -33,191 +32,164 @@
 
     <style>
         :root {
-            --nord-bg-primary: #0c1427;
-            --nord-cyan: #00D4FF;
-            --nord-purple: #9370DB;
-            --glass-bg: rgba(30, 58, 138, 0.15);
-            --glass-border: rgba(0, 212, 255, 0.15);
-            --cyan-glow: rgba(0, 212, 255, 0.3);
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F9FAFB;
+            --text-primary: #0A2540;
+            --text-secondary: #4B5563;
+            --border-color: #E5E7EB;
+            --accent: #00BFFF;
+            --accent-light: rgba(0, 191, 255, 0.08);
         }
 
         body {
-            background-color: var(--nord-bg-primary);
-            color: #F0F4F8;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
         }
 
-        #starfall {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
         .glass-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
             border-radius: 1.5rem;
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
         }
 
         .meeting-card {
-            background: rgba(30, 58, 138, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.1);
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
             border-radius: 1rem;
-            padding: 1.5rem;
+            padding: 1.25rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
+            text-align: left;
         }
 
         .meeting-card:hover {
-            border-color: var(--nord-cyan);
-            background: rgba(0, 212, 255, 0.05);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15);
+            border-color: var(--accent);
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 191, 255, 0.12);
         }
 
-        .meeting-card .icon {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 0.75rem;
+        .meeting-card:active {
+            transform: translateY(0);
+        }
+
+        .meeting-card .icon-wrapper {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.625rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .meeting-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .meeting-card p {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            .glass-card {
+                border-radius: 1rem;
+                margin: 0.5rem;
+            }
+            
+            .meeting-card {
+                padding: 1rem;
+            }
+            
+            .meeting-card .icon-wrapper {
+                width: 2.25rem;
+                height: 2.25rem;
+                font-size: 1.125rem;
+            }
         }
     </style>
 </head>
 <body class="antialiased">
-    <canvas id="starfall"></canvas>
 
     <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center">
-        <a href="https://nordsym.com" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <img src="https://raw.githubusercontent.com/GusHem/Logga-utan-text/refs/heads/main/Final%20logo%20no%20text.svg" alt="NordSym" class="h-8 w-8">
-            <span class="text-xs font-bold uppercase tracking-widest opacity-60">NordSym AB</span>
+    <nav class="fixed top-0 w-full z-50 px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center bg-white/80 backdrop-blur-sm border-b border-gray-100">
+        <a href="https://nordsym.com" class="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity">
+            <img src="https://raw.githubusercontent.com/GusHem/Logga-utan-text/refs/heads/main/Final%20logo%20no%20text.svg" alt="NordSym" class="h-7 w-7 sm:h-8 sm:w-8">
+            <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gray-400">NordSym</span>
         </a>
     </nav>
 
     <!-- Main -->
-    <main class="min-h-screen flex items-center justify-center p-4 pt-20">
-        <div class="glass-card w-full max-w-2xl p-8 md:p-12">
+    <main class="min-h-screen flex items-center justify-center p-3 sm:p-4 pt-16 sm:pt-20 pb-8">
+        <div class="glass-card w-full max-w-lg p-5 sm:p-8">
             
             <!-- Header -->
-            <div class="text-center mb-10">
-                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--nord-cyan)]/10 border border-[var(--nord-cyan)]/30 flex items-center justify-center">
-                    <span class="text-2xl">GH</span>
+            <div class="text-center mb-6 sm:mb-8">
+                <div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-full bg-gradient-to-br from-cyan-50 to-blue-50 border border-cyan-100 flex items-center justify-center text-lg sm:text-xl font-bold text-cyan-600">
+                    GH
                 </div>
-                <h1 class="font-display text-2xl md:text-3xl mb-2">Boka möte med Gustav</h1>
-                <p class="text-sm opacity-60">Vad vill du prata om?</p>
+                <h1 class="font-display text-xl sm:text-2xl text-gray-900 mb-1">Boka möte med Gustav</h1>
+                <p class="text-sm text-gray-500">Vad vill du prata om?</p>
             </div>
 
             <!-- Meeting Type Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 gap-3">
                 
                 <!-- Strategisamtal -->
-                <a href="index.html?type=strategisamtal" class="meeting-card group">
-                    <div class="icon bg-purple-500/20 text-purple-400">
+                <a href="index.html?type=strategisamtal" class="meeting-card">
+                    <div class="icon-wrapper bg-purple-100 text-purple-600">
                         <i class="ph-bold ph-chat-circle"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-1 group-hover:text-[var(--nord-cyan)] transition-colors">
-                        💬 Strategisamtal
-                    </h3>
-                    <p class="text-sm opacity-60">
-                        Vi pratar om era utmaningar — öppet och agnostiskt.
-                    </p>
+                    <h3>💬 Strategisamtal</h3>
+                    <p>Öppet samtal om era utmaningar — vi lyssnar och diskuterar möjligheter.</p>
                 </a>
 
                 <!-- AEO, GEO & SEO -->
-                <a href="index.html?type=aeo" class="meeting-card group">
-                    <div class="icon bg-cyan-500/20 text-cyan-400">
+                <a href="index.html?type=aeo" class="meeting-card">
+                    <div class="icon-wrapper bg-cyan-100 text-cyan-600">
                         <i class="ph-bold ph-magnifying-glass"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-1 group-hover:text-[var(--nord-cyan)] transition-colors">
-                        🔍 AEO, GEO & SEO
-                    </h3>
-                    <p class="text-sm opacity-60">
-                        Synlighet i AI- och traditionella sökmotorer.
-                    </p>
+                    <h3>🔍 AEO, GEO & SEO</h3>
+                    <p>Öka er synlighet i både AI-drivna och traditionella sökmotorer.</p>
                 </a>
 
                 <!-- AI Automation -->
-                <a href="index.html?type=automation" class="meeting-card group">
-                    <div class="icon bg-amber-500/20 text-amber-400">
+                <a href="index.html?type=automation" class="meeting-card">
+                    <div class="icon-wrapper bg-amber-100 text-amber-600">
                         <i class="ph-bold ph-lightning"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-1 group-hover:text-[var(--nord-cyan)] transition-colors">
-                        ⚡ AI Automation
-                    </h3>
-                    <p class="text-sm opacity-60">
-                        Automatisera era tidstjuvar med AI.
-                    </p>
+                    <h3>⚡ AI Automation</h3>
+                    <p>Hitta och automatisera era tidstjuvar — frigör tid för det viktiga.</p>
                 </a>
 
                 <!-- Skräddarsydd lösning -->
-                <a href="index.html?type=custom" class="meeting-card group">
-                    <div class="icon bg-green-500/20 text-green-400">
+                <a href="index.html?type=custom" class="meeting-card">
+                    <div class="icon-wrapper bg-green-100 text-green-600">
                         <i class="ph-bold ph-wrench"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-1 group-hover:text-[var(--nord-cyan)] transition-colors">
-                        🛠️ Skräddarsydd lösning
-                    </h3>
-                    <p class="text-sm opacity-60">
-                        Vi bygger precis det ni behöver.
-                    </p>
+                    <h3>🛠️ Skräddarsydd lösning</h3>
+                    <p>Ni har en specifik idé? Vi designar och bygger precis det ni behöver.</p>
                 </a>
 
             </div>
 
             <!-- Footer -->
-            <p class="text-center text-xs opacity-40 mt-8">
-                30 minuter • Google Meet • Gratis
+            <p class="text-center text-xs text-gray-400 mt-6">
+                30 min · Google Meet · Kostnadsfritt
             </p>
 
         </div>
     </main>
 
-    <script>
-        // Starfall animation
-        const canvas = document.getElementById('starfall');
-        const ctx = canvas.getContext('2d');
-        let width, height, stars = [];
-        
-        const resize = () => {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
-            stars = [];
-            for(let i = 0; i < 100; i++) {
-                stars.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    r: Math.random() * 1.5,
-                    a: Math.random()
-                });
-            }
-        };
-        
-        const draw = () => {
-            ctx.clearRect(0, 0, width, height);
-            stars.forEach(s => {
-                s.a += 0.005;
-                ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(Math.sin(s.a)) * 0.4})`;
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            requestAnimationFrame(draw);
-        };
-        
-        window.addEventListener('resize', resize);
-        resize();
-        draw();
-    </script>
 </body>
 </html>
