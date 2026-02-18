@@ -63,6 +63,9 @@
             cursor: pointer;
             transition: all 0.25s ease;
             text-align: left;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .meeting-card:hover {
@@ -98,9 +101,9 @@
             font-size: 0.8125rem;
             color: var(--text-secondary);
             line-height: 1.4;
+            flex-grow: 1;
         }
 
-        /* Mobile optimizations */
         @media (max-width: 640px) {
             .glass-card {
                 border-radius: 1rem;
@@ -131,7 +134,7 @@
 
     <!-- Main -->
     <main class="min-h-screen flex items-center justify-center p-3 sm:p-4 pt-16 sm:pt-20 pb-8">
-        <div class="glass-card w-full max-w-lg p-5 sm:p-8">
+        <div class="glass-card w-full max-w-2xl p-5 sm:p-8">
             
             <!-- Header -->
             <div class="text-center mb-6 sm:mb-8">
@@ -142,8 +145,8 @@
                 <p class="text-sm text-gray-500">Vad vill du prata om?</p>
             </div>
 
-            <!-- Meeting Type Cards -->
-            <div class="grid grid-cols-1 gap-3">
+            <!-- Meeting Type Cards - 2x2 Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 
                 <!-- Strategisamtal -->
                 <a href="index.html?type=strategisamtal" class="meeting-card">
@@ -151,7 +154,7 @@
                         <i class="ph-bold ph-chat-circle"></i>
                     </div>
                     <h3>💬 Strategisamtal</h3>
-                    <p>Öppet samtal om era utmaningar — vi lyssnar och diskuterar möjligheter.</p>
+                    <p>Öppet samtal om era utmaningar. Vi diskuterar möjligheter tillsammans.</p>
                 </a>
 
                 <!-- AEO, GEO & SEO -->
@@ -160,7 +163,7 @@
                         <i class="ph-bold ph-magnifying-glass"></i>
                     </div>
                     <h3>🔍 AEO, GEO & SEO</h3>
-                    <p>Öka er synlighet i både AI-drivna och traditionella sökmotorer.</p>
+                    <p>Öka er synlighet i både AI och traditionella sökmotorer.</p>
                 </a>
 
                 <!-- AI Automation -->
@@ -169,7 +172,7 @@
                         <i class="ph-bold ph-lightning"></i>
                     </div>
                     <h3>⚡ AI Automation</h3>
-                    <p>Hitta och automatisera era tidstjuvar — frigör tid för det viktiga.</p>
+                    <p>Hitta och automatisera era tidstjuvar. Frigör tid för det viktiga.</p>
                 </a>
 
                 <!-- Skräddarsydd lösning -->
@@ -178,7 +181,7 @@
                         <i class="ph-bold ph-wrench"></i>
                     </div>
                     <h3>🛠️ Skräddarsydd lösning</h3>
-                    <p>Ni har en specifik idé? Vi designar och bygger precis det ni behöver.</p>
+                    <p>Har ni en specifik idé? Jag designar och bygger det ni behöver.</p>
                 </a>
 
             </div>
