@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boka Strategimöte | NordSym</title>
-    <meta name="description" content="Boka ett strategimöte med Gustav Hemmingsson, NordSym AB.">
+    <title>Book Strategy Meeting | NordSym</title>
+    <meta name="description" content="Book a strategy meeting with Mohammed Alubeid, NordSym AB.">
     
     <!-- SEO & Social -->
     <meta name="author" content="NordSym AB">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Boka Strategimöte | NordSym">
+    <meta property="og:title" content="Book Strategy Meeting | NordSym">
     <meta property="og:image" content="https://nordsym.com/og-default.jpg">
 
     <!-- NordSym Favicon -->
@@ -241,7 +241,7 @@
             <!-- Explicit Back Link -->
             <a href="https://nordsym.com" class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[var(--nord-cyan)] hover:text-[var(--nord-text-primary)] transition-colors flex items-center gap-2 group">
                 <i class="ph-bold ph-arrow-left group-hover:-translate-x-1 transition-transform"></i> 
-                <span>Tillbaka till <span class="hidden sm:inline">NordSym.com</span><span class="sm:hidden">Start</span></span>
+                <span>Back to <span class="hidden sm:inline">NordSym.com</span><span class="sm:hidden">Home</span></span>
             </a>
 
             <button id="themeToggle" class="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--glass-border)] text-[var(--nord-cyan)] hover:bg-[var(--glass-bg)] transition-all">
@@ -262,12 +262,11 @@
                     <!-- Host Info -->
                     <div class="flex items-center gap-4 mb-8">
                         <div class="w-12 h-12 rounded-full bg-[var(--nord-cyan)]/20 border border-[var(--nord-cyan)] flex items-center justify-center overflow-hidden">
-                             <!-- Placeholder for Avatar if needed, using Initials for now -->
-                             <span class="font-bold text-[var(--nord-cyan)]">GH</span>
+                             <span class="font-bold text-[var(--nord-cyan)]">MA</span>
                         </div>
                         <div>
-                            <p class="text-[10px] uppercase tracking-widest opacity-50 font-bold">Din Värd</p>
-                            <h3 class="font-bold text-sm">Gustav Hemmingsson</h3>
+                            <p class="text-[10px] uppercase tracking-widest opacity-50 font-bold">Your Host</p>
+                            <h3 class="font-bold text-sm">Mohammed Alubeid</h3>
                         </div>
                     </div>
 
@@ -275,17 +274,17 @@
                     <div id="meetingInfoContainer" class="transition-opacity duration-300">
                         <!-- Back Button (Hidden by default) -->
                         <button id="resetMeetingBtn" onclick="setMeetingType('standard')" class="hidden mb-4 text-[10px] font-bold uppercase tracking-widest text-[var(--nord-cyan)] hover:opacity-80 flex items-center gap-1">
-                            <i class="ph-bold ph-arrow-left"></i> Tillbaka till AEO
+                            <i class="ph-bold ph-arrow-left"></i> Back to AEO
                         </button>
 
                         <h1 id="meetingTitle" class="font-display text-2xl md:text-3xl mb-4 text-[var(--nord-text-primary)]">
-                            Strategimöte <br><span class="text-[var(--nord-cyan)]">AEO & AI</span>
+                            Strategy Meeting <br><span class="text-[var(--nord-cyan)]">AEO & AI</span>
                         </h1>
                         
                         <div class="space-y-4 text-sm opacity-80 mb-8">
                             <div class="flex items-center gap-3">
                                 <i class="ph-bold ph-clock text-[var(--nord-cyan)]"></i>
-                                <span id="meetingDuration">30 minuter</span>
+                                <span id="meetingDuration">30 minutes</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <i class="ph-bold ph-video-camera text-[var(--nord-cyan)]"></i>
@@ -294,7 +293,7 @@
                             <div class="flex items-start gap-3">
                                 <i class="ph-bold ph-text-align-left text-[var(--nord-cyan)] mt-1"></i>
                                 <span id="meetingDesc" class="leading-relaxed text-xs opacity-70">
-                                    Vi går igenom din nuvarande digitala närvaro och identifierar hur AEO kan öka din synlighet i AI-erans sökresultat.
+                                    We'll review your current digital presence and identify how AEO can increase your visibility in AI-era search results.
                                 </span>
                             </div>
                         </div>
@@ -306,13 +305,13 @@
                     <div id="promoBox" onclick="setMeetingType('custom')" class="mb-4 p-3 rounded-lg bg-gradient-to-br from-[var(--nord-cyan)]/5 to-transparent border border-[var(--nord-cyan)]/10 hover:border-[var(--nord-cyan)]/30 hover:bg-[var(--nord-cyan)]/10 transition-all group cursor-pointer active:scale-95">
                         <div class="flex items-center gap-1.5 mb-1">
                             <i class="ph-duotone ph-sparkle text-[var(--nord-cyan)] text-xs"></i>
-                            <p class="text-[9px] font-black uppercase tracking-widest text-[var(--nord-cyan)]">Skräddarsydd Lösning</p>
+                            <p class="text-[9px] font-black uppercase tracking-widest text-[var(--nord-cyan)]">Custom Solution</p>
                         </div>
                         <p class="text-[10px] opacity-60 mb-2 leading-relaxed">
-                            Behöver ditt bolag ett eget bokningssystem? Vi bygger lösningar som matchar er identitet.
+                            Does your company need a custom booking system? We build solutions that match your identity.
                         </p>
                         <span class="text-[10px] font-bold flex items-center gap-1 group-hover:gap-2 transition-all text-[var(--nord-text-primary)]">
-                            Utforska möjligheterna <i class="ph-bold ph-arrow-right text-[var(--nord-cyan)]"></i>
+                            Explore possibilities <i class="ph-bold ph-arrow-right text-[var(--nord-cyan)]"></i>
                         </span>
                     </div>
 
@@ -330,7 +329,7 @@
                 <!-- View 1: Date Picker -->
                 <div id="calendarView" class="flex flex-col h-full transition-all duration-300">
                     <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-xl font-bold" id="currentMonthLabel">Januari 2025</h2>
+                        <h2 class="text-xl font-bold" id="currentMonthLabel">January 2025</h2>
                         <div class="flex gap-2">
                             <button onclick="changeMonth(-1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[var(--glass-border)] transition-colors"><i class="ph-bold ph-caret-left"></i></button>
                             <button onclick="changeMonth(1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[var(--glass-border)] transition-colors"><i class="ph-bold ph-caret-right"></i></button>
@@ -339,13 +338,13 @@
 
                     <!-- Weekday Headers -->
                     <div class="grid grid-cols-7 mb-2 text-center">
-                        <span class="text-[10px] uppercase font-bold opacity-40">Mån</span>
-                        <span class="text-[10px] uppercase font-bold opacity-40">Tis</span>
-                        <span class="text-[10px] uppercase font-bold opacity-40">Ons</span>
-                        <span class="text-[10px] uppercase font-bold opacity-40">Tor</span>
-                        <span class="text-[10px] uppercase font-bold opacity-40">Fre</span>
-                        <span class="text-[10px] uppercase font-bold opacity-40 text-red-400">Lör</span>
-                        <span class="text-[10px] uppercase font-bold opacity-40 text-red-400">Sön</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40">Mon</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40">Tue</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40">Wed</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40">Thu</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40">Fri</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40 text-red-400">Sat</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40 text-red-400">Sun</span>
                     </div>
 
                     <!-- Days Grid -->
@@ -356,8 +355,8 @@
                     <!-- Time Slots Container (Hidden initially) -->
                     <div id="timeSlotContainer" class="hidden border-t border-[var(--glass-border)] pt-6 fade-in h-full overflow-y-auto">
                         <div class="flex items-center justify-between mb-4">
-                            <span class="text-sm font-bold opacity-80" id="selectedDateLabel">Välj en tid</span>
-                            <button onclick="resetSelection()" class="text-xs text-[var(--nord-cyan)] hover:underline">Byt dag</button>
+                            <span class="text-sm font-bold opacity-80" id="selectedDateLabel">Select a time</span>
+                            <button onclick="resetSelection()" class="text-xs text-[var(--nord-cyan)] hover:underline">Change day</button>
                         </div>
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="timeSlotsGrid">
                             <!-- JS injected times -->
@@ -368,65 +367,65 @@
                 <!-- View 2: Booking Form (Hidden) -->
                 <div id="bookingForm" class="hidden flex-col h-full fade-in">
                     <button onclick="backToCalendar()" class="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100 hover:text-[var(--nord-cyan)] transition-colors">
-                        <i class="ph-bold ph-arrow-left"></i> Tillbaka
+                        <i class="ph-bold ph-arrow-left"></i> Back
                     </button>
                     
-                    <h2 class="text-2xl font-bold mb-2">Slutför bokning</h2>
-                    <p class="text-sm opacity-60 mb-8" id="bookingSummary">Tid och datum...</p>
+                    <h2 class="text-2xl font-bold mb-2">Complete booking</h2>
+                    <p class="text-sm opacity-60 mb-8" id="bookingSummary">Time and date...</p>
 
                     <form id="confirmForm" class="space-y-4 max-w-md">
                         <div>
-                            <label class="block text-[10px] uppercase tracking-widest opacity-50 mb-1">Namn</label>
-                            <input type="text" name="name" required class="input-styled" placeholder="Ditt namn">
+                            <label class="block text-[10px] uppercase tracking-widest opacity-50 mb-1">Name</label>
+                            <input type="text" name="name" required class="input-styled" placeholder="Your name">
                         </div>
                         <div>
-                            <label class="block text-[10px] uppercase tracking-widest opacity-50 mb-1">E-post</label>
-                            <input type="email" name="email" required class="input-styled" placeholder="namn@foretag.se">
+                            <label class="block text-[10px] uppercase tracking-widest opacity-50 mb-1">Email</label>
+                            <input type="email" name="email" required class="input-styled" placeholder="name@company.com">
                         </div>
                         <div>
-                            <label class="block text-[10px] uppercase tracking-widest opacity-50 mb-1">Meddelande (Valfritt)</label>
-                            <textarea name="notes" rows="3" class="input-styled" placeholder="Något specifikt vi ska förbereda?"></textarea>
+                            <label class="block text-[10px] uppercase tracking-widest opacity-50 mb-1">Message (Optional)</label>
+                            <textarea name="notes" rows="3" class="input-styled" placeholder="Anything specific we should prepare?"></textarea>
                         </div>
                         
                         <div class="pt-4">
                             <button type="submit" class="cta-button primary w-full flex justify-center items-center gap-2">
-                                <span>Boka Möte</span>
+                                <span>Book Meeting</span>
                                 <i class="ph-bold ph-paper-plane-right"></i>
                             </button>
                         </div>
-                        <p class="text-[10px] text-center opacity-40 mt-2">En kalenderinbjudan skickas automatiskt.</p>
+                        <p class="text-[10px] text-center opacity-40 mt-2">A calendar invitation will be sent automatically.</p>
                     </form>
                 </div>
 
-                <!-- Success State (Uppdaterad text & UI) -->
+                <!-- Success State -->
                 <div id="successState" class="hidden flex-col h-full items-center justify-center text-center fade-in">
                     <div class="w-20 h-20 rounded-full bg-green-500/10 text-green-500 flex items-center justify-center text-4xl mb-6 border border-green-500/20 shadow-[0_0_30px_rgba(16,185,129,0.15)] animate-bounce">
                         <i class="ph-fill ph-calendar-check"></i>
                     </div>
                     
-                    <h2 class="text-3xl font-bold mb-4 tracking-tight">Bokning Mottagen!</h2>
+                    <h2 class="text-3xl font-bold mb-4 tracking-tight">Booking Received!</h2>
                     
                     <div class="space-y-6 max-w-sm mx-auto mb-10">
                         <p class="opacity-70 text-sm leading-relaxed">
-                            Tack! Systemet har skickat en inbjudan från <strong>Google Calendar</strong> till din e-post.
+                            Thank you! The system has sent an invitation from <strong>Google Calendar</strong> to your email.
                         </p>
                         
                         <!-- Info Box -->
                         <div class="bg-[var(--nord-cyan)]/5 border border-[var(--nord-cyan)]/20 p-4 rounded-xl text-left relative overflow-hidden">
                             <div class="absolute top-0 left-0 w-1 h-full bg-[var(--nord-cyan)]"></div>
                             <p class="font-bold text-[var(--nord-cyan)] text-xs mb-2 flex items-center gap-2 uppercase tracking-widest">
-                                <i class="ph-bold ph-info"></i> Nästa steg
+                                <i class="ph-bold ph-info"></i> Next steps
                             </p>
                             <p class="opacity-70 text-xs leading-relaxed">
-                                1. Öppna din mailklient.<br>
-                                2. Acceptera inbjudan för att bekräfta tiden.<br>
-                                3. Videolänken (Meet/Zoom) finns i kalenderhändelsen.
+                                1. Open your email client.<br>
+                                2. Accept the invitation to confirm the time.<br>
+                                3. The video link (Meet/Zoom) is in the calendar event.
                             </p>
                         </div>
                     </div>
 
                     <button onclick="location.reload()" class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-30 hover:opacity-100 transition-opacity hover:text-[var(--nord-cyan)]">
-                        Tillbaka till start
+                        Back to start
                     </button>
                 </div>
 
@@ -467,7 +466,6 @@
                 const promoBox = document.getElementById('promoBox');
                 if (config.promoBox && config.promoBox.show) {
                     promoBox.style.display = 'block';
-                    // Keep existing promo box content for AEO
                 } else {
                     promoBox.style.display = 'none';
                 }
@@ -500,10 +498,9 @@
             let selectedDate = null;
             let selectedTime = null;
 
-            const monthNames = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"];
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             
             // Mock Data: Available times based on day of week
-            // 0=Sun, 6=Sat. 
             const availability = {
                 1: ["09:00", "10:00", "13:00", "14:30"], // Mon
                 2: ["09:00", "11:00", "14:00", "15:30"], // Tue
@@ -518,8 +515,7 @@
                 
                 document.getElementById('currentMonthLabel').textContent = `${monthNames[month]} ${year}`;
                 
-                const firstDay = new Date(year, month, 1).getDay(); // 0 = Sun
-                // Adjust for Monday start (0=Mon, 6=Sun)
+                const firstDay = new Date(year, month, 1).getDay();
                 const startOffset = firstDay === 0 ? 6 : firstDay - 1;
                 
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -561,26 +557,23 @@
             };
 
             function selectDate(day, el) {
-                // UI Reset
                 document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
                 el.classList.add('selected');
                 
                 selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
                 
-                // Show Times
                 const formattedDate = `${day} ${monthNames[currentDate.getMonth()]}`;
-                document.getElementById('selectedDateLabel').textContent = `Tider för ${formattedDate}`;
+                document.getElementById('selectedDateLabel').textContent = `Times for ${formattedDate}`;
                 
                 const container = document.getElementById('timeSlotContainer');
                 const timeGrid = document.getElementById('timeSlotsGrid');
                 timeGrid.innerHTML = '';
 
-                // Get slots (Mock logic)
                 const dayOfWeek = selectedDate.getDay();
                 const slots = availability[dayOfWeek] || [];
 
                 if(slots.length === 0) {
-                    timeGrid.innerHTML = '<div class="col-span-3 text-center text-xs opacity-50 py-4">Inga lediga tider denna dag.</div>';
+                    timeGrid.innerHTML = '<div class="col-span-3 text-center text-xs opacity-50 py-4">No available times this day.</div>';
                 } else {
                     slots.forEach((time, index) => {
                         const btn = document.createElement('div');
@@ -592,7 +585,6 @@
                     });
                 }
 
-                // Transition UI
                 document.getElementById('daysGrid').classList.add('opacity-50', 'pointer-events-none');
                 container.classList.remove('hidden');
             }
@@ -607,7 +599,7 @@
                 selectedTime = time;
                 const dateStr = `${selectedDate.getDate()} ${monthNames[selectedDate.getMonth()]} ${selectedDate.getFullYear()}`;
                 
-                document.getElementById('bookingSummary').innerHTML = `<span class="text-[var(--nord-cyan)] font-bold">${dateStr}</span> kl <span class="text-[var(--nord-cyan)] font-bold">${time}</span>`;
+                document.getElementById('bookingSummary').innerHTML = `<span class="text-[var(--nord-cyan)] font-bold">${dateStr}</span> at <span class="text-[var(--nord-cyan)] font-bold">${time}</span>`;
                 
                 document.getElementById('calendarView').classList.add('hidden');
                 document.getElementById('bookingForm').classList.remove('hidden');
@@ -626,27 +618,25 @@
                 const btn = e.target.querySelector('button');
                 const originalText = btn.innerHTML;
                 
-                // 1. Samla in all data
                 const formData = new FormData(e.target);
 
-                // Skapa ett snyggt datum-objekt att skicka
                 const payload = {
                     name: formData.get('name'),
                     email: formData.get('email'),
                     notes: formData.get('notes'),
-                    date: selectedDate.toLocaleDateString('sv-SE'), // T.ex. "2025-01-15"
+                    date: selectedDate.toLocaleDateString('en-US'),
                     time: selectedTime,
-                    meetingType: currentConfig.id, // "aeo", "strategisamtal", etc.
-                    meetingTitle: currentConfig.title + ' - ' + currentConfig.subtitle, // "Strategimöte - AEO & AI"
+                    meetingType: currentConfig.id,
+                    meetingTitle: currentConfig.title + ' - ' + currentConfig.subtitle,
+                    hostEmail: 'molle@nordsym.com',
+                    hostName: 'Mohammed Alubeid',
                     timestamp: new Date().toISOString()
                 };
 
-                // UI: Loading state
                 btn.disabled = true;
                 btn.innerHTML = '<i class="ph-bold ph-spinner animate-spin text-xl"></i>';
 
                 try {
-                    // 2. Skicka till n8n
                     const webhookUrl = 'https://nordsym.app.n8n.cloud/webhook/aeo-booking'; 
                     
                     const response = await fetch(webhookUrl, {
@@ -657,7 +647,6 @@
 
                     if (!response.ok) throw new Error('Network response was not ok');
 
-                    // 3. Success UI
                     document.getElementById('bookingForm').classList.add('hidden');
                     document.getElementById('bookingForm').classList.remove('flex');
                     document.getElementById('successState').classList.remove('hidden');
@@ -665,7 +654,7 @@
 
                 } catch (error) {
                     console.error('Error:', error);
-                    btn.innerHTML = 'Något gick fel, försök igen';
+                    btn.innerHTML = 'Something went wrong, try again';
                     btn.disabled = false;
                 }
             });
@@ -673,9 +662,7 @@
             // Init
             renderCalendar();
 
-            // --- Meeting Type Navigation (Config System) ---
             window.setMeetingType = (type) => {
-                // Navigate to different meeting type via URL param
                 window.location.href = `?type=${type}`;
             };
         });
