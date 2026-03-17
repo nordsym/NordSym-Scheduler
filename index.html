@@ -262,11 +262,11 @@
                     <!-- Host Info -->
                     <div class="flex items-center gap-4 mb-8">
                         <div class="w-12 h-12 rounded-full bg-[var(--nord-cyan)]/20 border border-[var(--nord-cyan)] flex items-center justify-center overflow-hidden">
-                             <span class="font-bold text-[var(--nord-cyan)]">MA</span>
+                             <span class="font-bold text-[var(--nord-cyan)]">M</span>
                         </div>
                         <div>
                             <p class="text-[10px] uppercase tracking-widest opacity-50 font-bold">Your Host</p>
-                            <h3 class="font-bold text-sm">Mohammed Alubeid</h3>
+                            <h3 class="font-bold text-sm">Molle</h3>
                         </div>
                     </div>
 
@@ -626,10 +626,10 @@
                     notes: formData.get('notes'),
                     date: selectedDate.toLocaleDateString('en-US'),
                     time: selectedTime,
-                    meetingType: currentConfig.id,
-                    meetingTitle: currentConfig.title + ' - ' + currentConfig.subtitle,
+                    meetingType: currentConfig?.id || 'strategy-meeting',
+                    meetingTitle: (currentConfig?.title || 'Strategy Meeting') + ' - ' + (currentConfig?.subtitle || 'AEO & AI'),
                     hostEmail: 'molle@nordsym.com',
-                    hostName: 'Mohammed Alubeid',
+                    hostName: 'Molle',
                     timestamp: new Date().toISOString()
                 };
 
