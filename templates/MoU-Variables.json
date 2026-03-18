@@ -1,0 +1,91 @@
+{
+  "template_version": "1.0",
+  "description": "Agnostic MoU Template - Fill these variables",
+  "variables": {
+    "PROVIDER_COMPANY_NAME": "NordSym AB",
+    "PROVIDER_ADDRESS": "Sweden",
+    "PROVIDER_ORG_NR": "559535-5768",
+    "PROVIDER_SIGNATORY_NAME": "Gustav Hemmingsson",
+    "PROVIDER_SIGNATORY_TITLE": "Founder & CEO",
+    
+    "CLIENT_COMPANY_NAME": "[Client Company Name]",
+    "CLIENT_ADDRESS": "[Client Address]",
+    "CLIENT_ORG_NR": "[Client Org Number]",
+    "CLIENT_SIGNATORY_NAME": "[Client Signatory Name]",
+    "CLIENT_SIGNATORY_TITLE": "[Client Signatory Title]",
+    
+    "DATE": "{{AUTO: YYYY-MM-DD}}",
+    "PROJECT_NAME": "[Project Name]",
+    
+    "SCOPE_ITEM_1": "• [High-level deliverable 1]",
+    "SCOPE_ITEM_2": "• [High-level deliverable 2]",
+    "SCOPE_ITEM_3": "• [High-level deliverable 3]",
+    "SCOPE_ITEM_4": "• [Optional deliverable 4]",
+    "SCOPE_ITEM_5": "• [Optional deliverable 5]",
+    
+    "CURRENCY": "EUR",
+    "MIN_AMOUNT": "[Minimum estimate]",
+    "MAX_AMOUNT": "[Maximum estimate]",
+    
+    "TARGET_START_DATE": "[Month YYYY]",
+    "ESTIMATED_DURATION": "[X weeks/months]",
+    
+    "NUMBER_OF_SESSIONS": "2-3",
+    "SoW_REVIEW_DAYS": "5",
+    
+    "CUSTOM_PROVIDER_RESPONSIBILITY_1": "[Optional custom responsibility]",
+    "CUSTOM_PROVIDER_RESPONSIBILITY_2": "[Optional custom responsibility]",
+    "CUSTOM_CLIENT_RESPONSIBILITY_1": "[Optional custom responsibility]",
+    "CUSTOM_CLIENT_RESPONSIBILITY_2": "[Optional custom responsibility]",
+    
+    "MOU_VALIDITY_DAYS": "90",
+    "TERMINATION_NOTICE_DAYS": "7",
+    
+    "GOVERNING_LAW_JURISDICTION": "Sweden",
+    
+    "DOCUMENT_ID": "{{AUTO: MOU-YYYYMMDD-XXX}}",
+    "VERSION": "1.0",
+    
+    "TERM_1": "[Optional glossary term]",
+    "DEFINITION_1": "[Optional definition]",
+    "TERM_2": "",
+    "DEFINITION_2": "",
+    "TERM_3": "",
+    "DEFINITION_3": ""
+  },
+  
+  "examples": {
+    "nakama": {
+      "CLIENT_COMPANY_NAME": "Nakama Island / GE Holding",
+      "PROJECT_NAME": "Nakama Island AI Integration",
+      "SCOPE_ITEM_1": "• AI agent system architecture design",
+      "SCOPE_ITEM_2": "• Integration with existing Nakama platform",
+      "SCOPE_ITEM_3": "• User onboarding automation",
+      "SCOPE_ITEM_4": "• Analytics dashboard implementation",
+      "SCOPE_ITEM_5": "• Technical documentation and training",
+      "MIN_AMOUNT": "50,000",
+      "MAX_AMOUNT": "75,000",
+      "TARGET_START_DATE": "April 2026",
+      "ESTIMATED_DURATION": "3-4 months"
+    },
+    "excom": {
+      "CLIENT_COMPANY_NAME": "Excom / Fikalabs",
+      "PROJECT_NAME": "Handled.sh Risk Module Enhancement",
+      "SCOPE_ITEM_1": "• Risk assessment module development",
+      "SCOPE_ITEM_2": "• Integration with Handled.sh platform",
+      "SCOPE_ITEM_3": "• Real-time monitoring dashboard",
+      "SCOPE_ITEM_4": "• Compliance reporting features",
+      "SCOPE_ITEM_5": "• User training and documentation",
+      "MIN_AMOUNT": "40,000",
+      "MAX_AMOUNT": "60,000",
+      "TARGET_START_DATE": "April 2026",
+      "ESTIMATED_DURATION": "2-3 months"
+    }
+  },
+  
+  "automation_notes": {
+    "n8n_integration": "This template can be automated via n8n with form input → template fill → PandaDoc/DocuSign send",
+    "variables_auto": "DATE and DOCUMENT_ID should be auto-generated",
+    "optional_fields": "CUSTOM_* and TERM_* fields can be removed if not needed"
+  }
+}
